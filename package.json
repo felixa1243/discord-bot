@@ -1,0 +1,15 @@
+{
+  "name": "botdc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "felixa1243 <felixarajiph@gmail.com>",
+  "scripts": {
+    "start": "node index"
+  },
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.5.0",
+    "dotenv": "^16.0.2"
+  }
+}
