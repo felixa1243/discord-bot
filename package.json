@@ -4,12 +4,14 @@
   "main": "index.js",
   "author": "felixa1243 <felixarajiph@gmail.com>",
   "scripts": {
-    "start": "node index"
+    "start": "nodemon index"
   },
   "type": "module",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/rest": "^1.2.0",
     "discord.js": "^14.5.0",
-    "dotenv": "^16.0.2"
+    "dotenv": "^16.0.2",
+    "nodemon": "^2.0.20"
   }
 }
