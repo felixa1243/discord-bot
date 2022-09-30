@@ -10,6 +10,7 @@ import {
  config
 }from './config/environment.js';
 import { commands } from './commands.js';
+import axios from 'axios';
 //client
 export const client = new Client({
     intents:[
@@ -56,11 +57,29 @@ client.on('guildMemberAdd',member=>{
        console.log(`user ${user.name} is added to server`);
    });
 client.on('ready',()=>{
-       console.log(`${client.user.tag} has logged in!`);
+    console.log(`${client.user.tag} has logged in!`);
    });
-
-client.on('interactionCreate',interaction=>{
+//command responses
+client.on('interactionCreate', async interaction=>{
     if(interaction.isChatInputCommand()){
-        interaction.reply({content:'pong!'})
+        if(interaction.commandName === 'ping'){
+            interaction.reply({content:'pong!'});
+        }
+        if(interaction.commandName === 'hot'){
+            try{
+                let url='https://api.themoviedb.org/3/';
+                let apikey=config.apikey;
+                url+=`trending/all/week?api_key=${apikey}`
+                let content=await axios.get(url);
+                let temp='';
+                content=content.data.results.map(movie=>{
+                    temp+=`title:${movie.title}
+                    `
+                });
+                interaction.reply({content:temp});
+            }catch(err){
+                console.error(err);
+            }
+        }
     }
   });
