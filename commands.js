@@ -5,6 +5,9 @@ export const commands = [
       description: 'Test if bot correctly added',
     },{
         name:'hot',
-        description:'look for popular list of movie'
+        description:'look for weekly trending movie'
+    },{
+      name:'search',
+      description:'find more information for a movie'
     }
   ];  

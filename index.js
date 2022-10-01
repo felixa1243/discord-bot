@@ -71,12 +71,13 @@ client.on('interactionCreate', async interaction=>{
                 let apikey=config.apikey;
                 url+=`trending/all/week?api_key=${apikey}`
                 let content=await axios.get(url);
-                let temp='';
-                content=content.data.results.map(movie=>{
-                    temp+=`title:${movie.title}
-                    `
+                let temp='**Weekly trending** 🔥 \n \n';
+                content=content.data.results.filter(result=>result.title).map((movie,index)=>{
+                    temp+=`**#${index+1}-${movie.title}** \n Popularity-${movie.popularity} \n`;
                 });
-                interaction.reply({content:temp});
+                const uname=interaction.user.username;
+                temp+=`\n *statistic based on the movie database (tmdb) \n <@${interaction.user.id}>`;
+                await interaction.reply({content:temp});
             }catch(err){
                 console.error(err);
             }
