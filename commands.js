@@ -7,7 +7,15 @@ export const commands = [
         name:'hot',
         description:'look for weekly trending movie'
     },{
-      name:'search',
-      description:'find more information for a movie'
+      name:'find',
+      description:'find more information for a movie',
+      options:[
+        {
+          name:'movie',
+          description:'name of movie',
+          type:'3',
+          required:true
+        }
+      ]
     }
   ];  
